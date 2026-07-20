@@ -2,7 +2,7 @@
 
 <div align="center">
 
-<img src="assets/logo-dark.svg" width="120" alt="Wanderly Logo">
+<img src="images/wanderly-logo.png" width="120" alt="Wanderly Logo">
 
 ### **Discover. Dream. Wander.**
 
@@ -39,16 +39,17 @@ It's to make users **feel like they're already planning their next journey.**
 # Preview
 
 Home Page
+<img width="1578" height="2539" alt="127 0 0 1_5502_index html (1)" src="https://github.com/user-attachments/assets/dbcd4a90-68f6-44ac-8f3e-bc4ad7bb310e" />
 
-Explore Page
-
-Dark Mode
-
-Mobile Navigation
+Explore Page (Dark Mode)
+<img width="1578" height="1461" alt="127 0 0 1_5502_explore html" src="https://github.com/user-attachments/assets/76f1391e-f934-4dc7-a0d5-eb1ec9e591c9" />
 
 Destination Search
+<img width="1578" height="1141" alt="127 0 0 1_5502_explore html (1)" src="https://github.com/user-attachments/assets/978b485e-9ede-4ff4-b33a-29eb608f2d15" />
 
-Wishlist
+Trip Planner
+<img width="1578" height="2881" alt="127 0 0 1_5502_planner html (1)" src="https://github.com/user-attachments/assets/02d544dd-1ecf-4ec9-b0d5-8b89fd49febc" />
+
 
 ---
 
