@@ -1,0 +1,901 @@
+/* =======================================================
+   THEME VARIABLES (light default, dark override below)
+   ======================================================= */
+:root{
+    --bg-page:#f5f5f5;
+    --bg-surface:#ffffff;
+    --text-heading:#0b2a67;
+    --text-body:#444444;
+    --text-muted:gray;
+    --text-muted-2:#4b5563;
+    --text-faint:#8a8a8a;
+    --border-color:#ececec;
+    --border-color-soft:#e2e2e2;
+    --accent:#0b4cc2;
+    --accent-strong:#08368a;
+    --icon-tint-bg:#eaf1fd;
+    --hover-tint:#f2f6ff;
+    --card-shadow:rgba(0,0,0,0.08);
+    --input-bg:#ffffff;
+    --preloader-bg:rgba(245,246,248,0.72);
+    --preloader-track:rgba(11,42,103,0.12);
+    --theme-transition:background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="dark"]{
+    --bg-page:#0f1420;
+    --bg-surface:#1a2133;
+    --text-heading:#ffffff;
+    --text-body:#c3cadb;
+    --text-muted:#9aa3ba;
+    --text-muted-2:#aab2c8;
+    --text-faint:#8a93ab;
+    --border-color:rgba(255,255,255,0.10);
+    --border-color-soft:rgba(255,255,255,0.14);
+    --accent:#4c8dff;
+    --accent-strong:#2f6fe0;
+    --icon-tint-bg:rgba(76,141,255,0.14);
+    --hover-tint:rgba(76,141,255,0.10);
+    --card-shadow:rgba(0,0,0,0.35);
+    --input-bg:#232b42;
+    --preloader-bg:rgba(15,20,32,0.78);
+    --preloader-track:rgba(255,255,255,0.12);
+}
+
+/* =======================================================
+   GLOBAL RESET & BASE
+   ======================================================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+}
+
+html, body{
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+}
+
+body{
+    background-color:var(--bg-page);
+    transition:var(--theme-transition);
+}
+
+img, picture, video{
+    max-width:100%;
+    height:auto;
+    display:block;
+}
+
+.container{
+    padding-left:16px;
+    padding-right:16px;
+}
+
+input, textarea, select{
+    font-size:15px;
+    font-family:inherit;
+}
+
+button, input[type="submit"], .LoginButton, .SendButton{
+    touch-action:manipulation;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+}
+
+/* =======================================================
+   SCROLL PROGRESS BAR (shared, sits above the navbar)
+   ======================================================= */
+.ScrollProgress{
+    position:fixed;
+    top:0;
+    left:0;
+    height:3px;
+    width:0%;
+    background-color:var(--accent);
+    z-index:1100;
+}
+
+/* =======================================================
+   SCROLL-TO-TOP FLOATING BUTTON (shared)
+   ======================================================= */
+.ScrollTopBtn{
+    position:fixed;
+    right:24px;
+    bottom:24px;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:none;
+    background-color:var(--bg-surface);
+    color:var(--accent);
+    box-shadow:0px 6px 18px rgba(0,0,0,0.15);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:900;
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(12px);
+    transition:opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s, background-color 0.25s ease, color 0.25s ease;
+}
+
+.ScrollTopBtn.is-visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+    transition:opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0s, background-color 0.25s ease, color 0.25s ease;
+}
+
+.ScrollTopBtn:hover{
+    background-color:var(--accent);
+    color:white;
+    transform:translateY(-3px);
+}
+
+.ScrollTopBtn:active{
+    transform:translateY(-1px) scale(0.94);
+}
+
+.ScrollTopBtn:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+}
+
+@media (max-width:900px){
+    .ScrollTopBtn{
+        right:16px;
+        bottom:16px;
+        width:40px;
+        height:40px;
+    }
+}
+
+/* =======================================================
+   TOAST NOTIFICATIONS (shared)
+   ======================================================= */
+.ToastContainer{
+    position:fixed;
+    top:96px;
+    right:20px;
+    z-index:1200;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    max-width:320px;
+    width:calc(100% - 40px);
+}
+
+.Toast{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    padding:14px 16px;
+    background-color:var(--bg-surface);
+    color:var(--text-heading);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    box-shadow:0px 8px 24px rgba(0,0,0,0.15);
+    opacity:0;
+    transform:translateX(24px);
+    transition:opacity 0.3s ease, transform 0.3s ease;
+}
+
+.Toast.is-visible{
+    opacity:1;
+    transform:translateX(0);
+}
+
+.Toast--success{
+    border-left-color:#16a34a;
+}
+
+.Toast--error{
+    border-left-color:#dc2626;
+}
+
+.Toast span{
+    flex:1;
+    font-size:14px;
+    line-height:20px;
+}
+
+.ToastClose{
+    background:transparent;
+    border:none;
+    color:var(--text-muted-2);
+    font-size:18px;
+    line-height:1;
+    cursor:pointer;
+    padding:0;
+    flex-shrink:0;
+}
+
+.ToastClose:hover{
+    color:var(--text-heading);
+}
+
+.ToastClose:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+}
+
+@media (max-width:480px){
+    .ToastContainer{
+        left:20px;
+        right:20px;
+        max-width:none;
+        width:auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .Toast{
+        transition:opacity 0.15s linear;
+        transform:none;
+    }
+    .PreloaderLogo, .PreloaderBar span{
+        animation:none;
+        opacity:1;
+        clip-path:none;
+        width:100%;
+        transform:none;
+    }
+    .Preloader{
+        transition:none;
+    }
+    .ScrollTopBtn{
+        transition:opacity 0.15s linear, visibility 0s linear;
+        transform:none;
+    }
+    .ScrollTopBtn:hover{
+        transform:none;
+    }
+    .Main1, .NavBar{
+        transition:box-shadow 0.3s ease, var(--theme-transition);
+        opacity:1;
+    }
+    .WishlistBtn{
+        transition:background-color 0.2s ease, color 0.2s ease;
+    }
+    .WishlistBtn:hover,
+    .WishlistBtn:active{
+        transform:none;
+    }
+}
+
+/* =======================================================
+   PRELOADER (shared, shown once per browser session)
+   ======================================================= */
+.Preloader{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--preloader-bg);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    transition:opacity 0.5s ease;
+}
+
+.Preloader.is-hidden{
+    opacity:0;
+    pointer-events:none;
+}
+
+.PreloaderPanel{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.PreloaderLogo{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+    opacity:0;
+    clip-path:inset(0 100% 0 0);
+    animation:preloaderWipe 0.9s cubic-bezier(0.4,0,0.2,1) forwards 0.1s;
+}
+
+.PreloaderBar{
+    width:140px;
+    height:2px;
+    background:var(--preloader-track);
+    border-radius:2px;
+    overflow:hidden;
+}
+
+.PreloaderBar span{
+    display:block;
+    height:100%;
+    width:0%;
+    background:var(--accent);
+    border-radius:2px;
+    animation:preloaderFill 1.1s ease forwards 0.25s;
+}
+
+@keyframes preloaderWipe{
+    0%{ opacity:1; clip-path:inset(0 100% 0 0); }
+    100%{ opacity:1; clip-path:inset(0 0 0 0); }
+}
+
+@keyframes preloaderFill{
+    from{ width:0%; }
+    to{ width:100%; }
+}
+
+body.no-scroll{
+    overflow:hidden;
+}
+
+/* =======================================================
+   ICONS (inline SVGs use this base sizing)
+   ======================================================= */
+.icon{
+    width:18px;
+    height:18px;
+    display:inline-block;
+    vertical-align:middle;
+    flex-shrink:0;
+}
+
+/* =======================================================
+   SHARED ACCENTS
+   ======================================================= */
+.Line{
+    width:80px;
+    height:4px;
+    background-color:#0b4cc2;
+    margin-bottom:10px;
+}
+
+.AccentIcon{
+    color:#0b4cc2;
+    margin-bottom:25px;
+}
+
+.AccentIcon .icon{
+    width:16px;
+    height:16px;
+}
+
+span.error-text{
+    color:red;
+    font-size:14px;
+}
+
+/* =======================================================
+   NAVBAR (same on every page)
+   ======================================================= */
+.Main1, .NavBar{
+    width:100%;
+    height:80px;
+    background-color:var(--bg-surface);
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    border-bottom:1px solid var(--border-color);
+    opacity:0;
+    transition:box-shadow 0.3s ease, opacity 0.6s ease, var(--theme-transition);
+}
+
+body.page-ready .Main1,
+body.page-ready .NavBar{
+    opacity:1;
+}
+
+.Main1.is-scrolled, .NavBar.is-scrolled{
+    box-shadow:0px 6px 20px rgba(15,23,42,0.06);
+}
+
+.Sub11{
+    position:absolute;
+    left:35px;
+    top:0px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:var(--text-heading);
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:-0.01em;
+    text-decoration:none;
+}
+
+.BrandLogo{
+    width:34px;
+    height:34px;
+}
+
+.Sub12{
+    position:absolute;
+    right:220px;
+    top:0px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    gap:36px;
+    list-style:none;
+}
+
+.Sub12 a{
+    position:relative;
+    text-decoration:none;
+    color:var(--text-muted-2);
+    font-size:15px;
+    font-weight:500;
+    padding-bottom:4px;
+    transition:color 0.25s ease;
+}
+
+.Sub12 a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:2px;
+    background-color:var(--accent);
+    transform:scaleX(0);
+    transform-origin:left;
+    transition:transform 0.25s ease;
+}
+
+.Sub12 a:hover{
+    color:var(--text-heading);
+}
+
+.Sub12 a:hover::after{
+    transform:scaleX(1);
+}
+
+.Sub12 a.active{
+    color:var(--accent);
+}
+
+.Sub12 a.active::after{
+    transform:scaleX(1);
+}
+
+.Sub13{
+    position:absolute;
+    right:35px;
+    top:0px;
+    height:80px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.Sub13 button{
+    height:38px;
+    padding:0 22px;
+    border:1.5px solid var(--accent);
+    border-radius:999px;
+    background-color:transparent;
+    color:var(--accent);
+    font-weight:600;
+    font-size:14px;
+    cursor:pointer;
+    transition:background-color 0.25s ease, color 0.25s ease;
+}
+
+.Sub13 button:hover{
+    background-color:var(--accent);
+    color:white;
+}
+
+/* ===== Theme toggle ===== */
+.Sub13 .ThemeToggle{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1.5px solid var(--border-color-soft);
+    background-color:transparent;
+    color:var(--text-heading);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    padding:0;
+    font-weight:normal;
+    transition:background-color 0.25s ease, border-color 0.25s ease;
+}
+
+.Sub13 .ThemeToggle:hover{
+    background-color:var(--hover-tint);
+    color:var(--text-heading);
+    border-color:var(--accent);
+}
+
+.ThemeToggle .icon-moon,
+.MobileThemeToggle .icon-moon{
+    display:none;
+}
+
+[data-theme="dark"] .ThemeToggle .icon-sun,
+[data-theme="dark"] .MobileThemeToggle .icon-sun{
+    display:none;
+}
+
+[data-theme="dark"] .ThemeToggle .icon-moon,
+[data-theme="dark"] .MobileThemeToggle .icon-moon{
+    display:block;
+}
+
+/* =======================================================
+   MOBILE NAV DRAWER (same on every page)
+   ======================================================= */
+.nav-toggle{
+    display:none;
+    position:absolute;
+    right:20px;
+    top:0;
+    height:80px;
+    width:32px;
+    z-index:1002;
+    background:transparent;
+    border:none;
+    cursor:pointer;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    gap:6px;
+}
+
+.nav-toggle span{
+    display:block;
+    width:24px;
+    height:2px;
+    background-color:var(--text-heading);
+    border-radius:2px;
+    transition:transform 0.28s ease, opacity 0.2s ease;
+}
+
+.nav-toggle.open span:nth-child(1){
+    transform:translateY(8px) rotate(45deg);
+}
+
+.nav-toggle.open span:nth-child(2){
+    opacity:0;
+}
+
+.nav-toggle.open span:nth-child(3){
+    transform:translateY(-8px) rotate(-45deg);
+}
+
+.mobile-nav{
+    display:flex;
+    flex-direction:column;
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    width:270px;
+    background:var(--bg-surface);
+    z-index:1001;
+    box-shadow:2px 0 24px rgba(15,23,42,0.10);
+    padding:100px 20px 24px;
+    transform:translateX(-100%);
+    transition:transform 0.3s ease, var(--theme-transition);
+}
+
+.mobile-nav.open{
+    transform:translateX(0);
+}
+
+.mobile-nav a{
+    display:block;
+    padding:12px 10px;
+    color:var(--text-heading);
+    text-decoration:none;
+    font-weight:600;
+    font-size:15px;
+    border-radius:8px;
+    transition:background-color 0.2s ease, color 0.2s ease;
+}
+
+.mobile-nav a:hover{
+    background:var(--hover-tint);
+    color:var(--accent);
+}
+
+.mobile-nav a.MobileCTA{
+    margin-top:14px;
+    text-align:center;
+    background-color:var(--accent);
+    color:white;
+}
+
+.mobile-nav a.MobileCTA:hover{
+    background-color:var(--accent-strong);
+    color:white;
+}
+
+.MobileThemeToggle{
+    margin-top:6px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    width:100%;
+    padding:12px 10px;
+    border:none;
+    border-radius:8px;
+    background:transparent;
+    color:var(--text-heading);
+    font-weight:600;
+    font-size:15px;
+    font-family:inherit;
+    cursor:pointer;
+    transition:background-color 0.2s ease, color 0.2s ease;
+}
+
+.MobileThemeToggle:hover{
+    background:var(--hover-tint);
+    color:var(--accent);
+}
+
+.mobile-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,0.35);
+    z-index:1000;
+}
+
+.mobile-backdrop.open{
+    display:block;
+}
+
+/* =======================================================
+   DESTINATION CARDS (shared by index.html & explore.html)
+   ======================================================= */
+.DestCard{
+    position:relative;
+    background-color:var(--bg-surface);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0px 4px 14px var(--card-shadow);
+    border:1px solid transparent;
+    transition:all 0.3s ease, var(--theme-transition);
+}
+
+.WishlistBtn{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:34px;
+    height:34px;
+    border-radius:50%;
+    border:none;
+    background-color:rgba(255,255,255,0.85);
+    color:#0b2a67;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    z-index:5;
+    transition:background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+}
+
+.WishlistBtn:hover{
+    background-color:#ffffff;
+    transform:scale(1.08);
+}
+
+.WishlistBtn:active{
+    transform:scale(0.92);
+}
+
+.WishlistBtn .icon{
+    width:17px;
+    height:17px;
+}
+
+.WishlistBtn.is-saved{
+    color:#e11d48;
+}
+
+.WishlistBtn.is-saved .icon{
+    fill:currentColor;
+}
+
+.WishlistBtn:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+}
+
+[data-theme="dark"] .DestCard{
+    border-color:var(--border-color);
+}
+
+.DestCard img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+    transition:transform 0.4s ease;
+}
+
+.DestCard:hover img{
+    transform:scale(1.08);
+}
+
+.DestCard h3{
+    margin:12px 14px 4px;
+    color:var(--text-heading);
+    font-size:17px;
+}
+
+.DestCard p{
+    margin:0 14px 14px;
+    color:var(--text-muted);
+    font-size:14px;
+}
+
+.DestCard:hover{
+    transform:translateY(-6px);
+    box-shadow:0px 8px 20px var(--card-shadow);
+}
+
+/* =======================================================
+   FOOTER (same on every page that has a footer)
+   ======================================================= */
+.Footer{
+    background-color:#08265f;
+    color:white;
+    display:flex;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+    padding:40px;
+}
+
+.FooterBox{
+    width:220px;
+}
+
+.FooterBox h2{
+    margin-bottom:16px;
+    font-size:19px;
+}
+
+.FooterBox p{
+    line-height:26px;
+    color:#c7d0e6;
+    font-size:14px;
+}
+
+.FooterBox a{
+    text-decoration:none;
+    color:#c7d0e6;
+    font-size:14px;
+    line-height:26px;
+    display:block;
+}
+
+.FooterBox a:hover{
+    color:#87CEFA;
+}
+
+.SocialRow{
+    display:flex;
+    gap:10px;
+    margin-top:16px;
+}
+
+.SocialCircle{
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-decoration:none;
+    transition:background 0.3s ease;
+}
+
+.SocialCircle .icon{
+    width:15px;
+    height:15px;
+}
+
+.SocialCircle:hover{
+    background:#0b4cc2;
+}
+
+.NewsletterForm{
+    display:flex;
+    margin-top:12px;
+}
+
+.NewsletterForm input{
+    flex:1;
+    min-width:0;
+    height:40px;
+    border:none;
+    border-radius:20px 0 0 20px;
+    padding-left:14px;
+    outline:none;
+}
+
+.NewsletterForm button{
+    width:44px;
+    height:40px;
+    background-color:#0b4cc2;
+    color:white;
+    border:none;
+    border-radius:0 20px 20px 0;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.NewsletterForm button:hover{
+    background-color:#08368a;
+}
+
+.Copy{
+    background-color:#08265f;
+    color:#c7d0e6;
+    text-align:center;
+    padding:15px;
+    font-size:13px;
+    border-top:1px solid rgba(255,255,255,0.15);
+}
+
+/* =======================================================
+   RESPONSIVE (shared breakpoints)
+   ======================================================= */
+@media (max-width:900px){
+    .Main1, .NavBar{ padding-left:12px; padding-right:12px; }
+    .Sub11{ left:16px !important; }
+    .Sub12{ display:none !important; }
+    .Sub13{ display:none !important; }
+    .nav-toggle{ display:flex; }
+}
+
+@media (max-width:768px){
+    .Footer{
+        display:block;
+        text-align:center;
+    }
+    .FooterBox{
+        width:100%;
+        margin-bottom:30px;
+    }
+    .SocialRow{
+        justify-content:center;
+    }
+    .NewsletterForm{
+        max-width:320px;
+        margin:12px auto 0;
+    }
+}
+
+@media (max-width:480px){
+    h1{ font-size:28px; }
+    .LeftText h1, .Sub14 h1{ font-size:28px !important; }
+    .LeftText p, .Sub14 p{ font-size:16px !important; line-height:24px !important; }
+    .Right{ padding:20px !important; }
+    .Right h1{ font-size:26px !important; }
+    .DestCard{ width:100% !important; margin:12px 0 !important; }
+}
