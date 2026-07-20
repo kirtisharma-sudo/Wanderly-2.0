@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+    var storedTheme = localStorage.getItem('wanderlyTheme');
+    var theme = (storedTheme === 'dark' || storedTheme === 'light')
+        ? storedTheme
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+<title>Wanderly - Trip Planner</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/planner.css">
+</head>
+<body>
+
+    <div class="ScrollProgress" id="scrollProgress"></div>
+
+    <div class="ToastContainer" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="Preloader" id="preloader" aria-hidden="true">
+        <div class="PreloaderPanel">
+            <img src="images/wanderly-logo.png" alt="" class="PreloaderLogo">
+            <div class="PreloaderBar"><span></span></div>
+        </div>
+    </div>
+
+<div class="Main1">
+    <a href="index.html" class="Sub11">
+        <img src="images/wanderly-logo.png" alt="" class="BrandLogo">
+        Wanderly
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+    </button>
+
+    <ul class="Sub12">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="planner.html" class="active">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="Sub13">
+        <button class="ThemeToggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button onclick="window.location='login.html'">Login</button>
+    </div>
+</div>
+
+<nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="explore.html">Explore</a>
+    <a href="planner.html" class="active">Planner</a>
+    <a href="contact.html">Contact</a>
+    <a href="login.html" class="MobileCTA">Login</a>
+    <button class="MobileThemeToggle" id="mobileThemeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span>Toggle theme</span>
+    </button>
+</nav>
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+<div class="PlannerHero">
+    <div class="PlannerHeroInner">
+        <span class="PlannerBadge">Trip Planner</span>
+        <h1>Plan your next trip in seconds</h1>
+        <p>Tell us your budget, how many days you have, and where you're headed. We'll put together a day-by-day plan built around it.</p>
+    </div>
+</div>
+
+<div class="PlannerWrap">
+
+    <form class="PlannerForm" id="plannerForm" novalidate>
+        <div class="PlannerField">
+            <label for="plannerDestination">Destination</label>
+            <input type="text" id="plannerDestination" placeholder="e.g. Bali, Tokyo, Paris..." autocomplete="off">
+            <span class="error-text" id="plannerDestinationError"></span>
+        </div>
+
+        <div class="PlannerField">
+            <label for="plannerDays">Number of days</label>
+            <input type="number" id="plannerDays" min="1" max="14" value="3">
+            <span class="error-text" id="plannerDaysError"></span>
+        </div>
+
+        <div class="PlannerField">
+            <label for="plannerBudget">Total budget (USD)</label>
+            <input type="number" id="plannerBudget" min="50" step="10" placeholder="e.g. 800">
+            <span class="error-text" id="plannerBudgetError"></span>
+        </div>
+
+        <button type="submit" class="PlannerSubmit" id="plannerSubmit">Generate Itinerary</button>
+    </form>
+
+    <div class="PlannerLoading" id="plannerLoading" hidden>
+        <div class="PlannerSpinner"></div>
+        <p id="plannerLoadingText">Reading your preferences...</p>
+    </div>
+
+    <div class="PlannerResults" id="plannerResults" hidden>
+        <div class="PlannerSummary">
+            <div>
+                <h2 id="plannerResultTitle">Your trip</h2>
+                <p id="plannerResultSubtitle"></p>
+            </div>
+            <div class="PlannerBudgetStatus" id="plannerBudgetStatus"></div>
+        </div>
+
+        <div class="PlannerDays" id="plannerItineraryDays"></div>
+
+        <div class="PlannerActions">
+            <button type="button" class="PlannerRegenerate" id="plannerRegenerate">Regenerate</button>
+            <button type="button" class="PlannerStartOver" id="plannerStartOver">Plan another trip</button>
+        </div>
+    </div>
+
+</div>
+
+<div class="Footer">
+    <div class="FooterBox">
+        <h2>Wanderly</h2>
+        <p>Let's make your next journey your best adventure yet.</p>
+        <div class="SocialRow">
+            <a href="https://www.facebook.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="https://www.instagram.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="https://www.twitter.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="https://www.youtube.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path></svg></a>
+        </div>
+    </div>
+
+    <div class="FooterBox">
+        <h2>Quick Links</h2>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="explore.html">Explore</a>
+        <a href="planner.html">Planner</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="FooterBox">
+        <h2>Top Destinations</h2>
+        <a href="explore.html">Bali</a>
+        <a href="explore.html">Greece</a>
+        <a href="explore.html">Switzerland</a>
+        <a href="explore.html">Japan</a>
+    </div>
+
+    <div class="FooterBox">
+        <h2>Support</h2>
+        <p>FAQ</p>
+        <p>Privacy Policy</p>
+        <p>Terms &amp; Conditions</p>
+    </div>
+</div>
+
+<div class="Copy">&copy; 2026 Wanderly. All Rights Reserved.</div>
+
+<button class="ScrollTopBtn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<script src="js/loader.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/planner.js"></script>
+</body>
+</html>

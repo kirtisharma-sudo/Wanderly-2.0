@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+    var storedTheme = localStorage.getItem('wanderlyTheme');
+    var theme = (storedTheme === 'dark' || storedTheme === 'light')
+        ? storedTheme
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+<title>Wanderly - Login</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+
+    <div class="ScrollProgress" id="scrollProgress"></div>
+
+    <div class="ToastContainer" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="Preloader" id="preloader" aria-hidden="true">
+        <div class="PreloaderPanel">
+            <img src="images/wanderly-logo.png" alt="" class="PreloaderLogo">
+            <div class="PreloaderBar"><span></span></div>
+        </div>
+    </div>
+
+<div class="Main1">
+    <a href="index.html" class="Sub11">
+        <img src="images/wanderly-logo.png" alt="" class="BrandLogo">
+        Wanderly
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="Sub12">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="planner.html">Planner</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="Sub13">
+        <button class="ThemeToggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <button onclick="window.location='signup.html'">Sign Up</button>
+    </div>
+</div>
+
+<nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="explore.html">Explore</a>
+    <a href="planner.html">Planner</a>
+    <a href="contact.html">Contact</a>
+    <a href="signup.html" class="MobileCTA">Sign Up</a>
+    <button class="MobileThemeToggle" id="mobileThemeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        <span>Toggle theme</span>
+    </button>
+</nav>
+<div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+<div class="Main2">
+    <div class="Left">
+        <div class="LeftText">
+            <h1>Welcome Back!</h1>
+            <p>Login to continue your journey with us and explore the world.</p>
+        </div>
+    </div>
+
+    <div class="Right">
+        <div class="RightCard">
+            <h1>Login</h1>
+            <p>Enter your credentials to access your account.</p>
+
+            <form onsubmit="return LoginForm()">
+                <label for="mail">Email Address</label>
+                <input type="email" id="mail" placeholder="Enter your email">
+                <span id="alert1"></span>
+
+                <label for="pass">Password</label>
+                <input type="password" id="pass" placeholder="Enter your password">
+                <span id="alert2"></span>
+
+                <div class="Remember">
+                    <div>
+                        <input type="checkbox" id="check">
+                        <label for="check" class="CheckLabel">Remember Me</label>
+                    </div>
+                    <a href="#">Forgot Password?</a>
+                </div>
+
+                <input type="submit" value="Login" class="LoginButton">
+
+                <div class="SignUp">
+                    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="js/login.js"></script>
+<button class="ScrollTopBtn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<script src="js/loader.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+</body>
+</html>

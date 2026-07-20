@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+(function(){
+    var storedTheme = localStorage.getItem('wanderlyTheme');
+    var theme = (storedTheme === 'dark' || storedTheme === 'light')
+        ? storedTheme
+        : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.setAttribute('data-theme', theme);
+})();
+</script>
+<title>Wanderly - About</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/about.css">
+</head>
+<body>
+
+    <div class="ScrollProgress" id="scrollProgress"></div>
+
+    <div class="ToastContainer" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="Preloader" id="preloader" aria-hidden="true">
+        <div class="PreloaderPanel">
+            <img src="images/wanderly-logo.png" alt="" class="PreloaderLogo">
+            <div class="PreloaderBar"><span></span></div>
+        </div>
+    </div>
+
+    <div class="Main1">
+        <a href="index.html" class="Sub11">
+            <img src="images/wanderly-logo.png" alt="" class="BrandLogo">
+            Wanderly
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobileNav">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="Sub12">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="explore.html">Explore</a></li>
+            <li><a href="planner.html">Planner</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="Sub13">
+            <button class="ThemeToggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+                <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+            <button onclick="window.location='login.html'">Login</button>
+        </div>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="explore.html">Explore</a>
+        <a href="planner.html">Planner</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="MobileCTA">Login</a>
+        <button class="MobileThemeToggle" id="mobileThemeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+            <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span>Toggle theme</span>
+        </button>
+    </nav>
+    <div class="mobile-backdrop" id="mobileBackdrop"></div>
+
+    <div class="Main2">
+        <div class="Sub21">
+            <h1>About Us</h1>
+            <div class="Line"></div>
+            <div class="AccentIcon">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            </div>
+            <p>
+                At Wanderly, we believe that travel is more
+                than just visiting new places. It is about
+                creating unforgettable memories with your
+                friends and family.
+            </p>
+            <br>
+            <p>
+                Our mission is to help travelers explore
+                the world with comfort, affordable prices
+                and the best travel experiences.
+            </p>
+        </div>
+
+        <div class="Sub22">
+            <img src="https://tse3.mm.bing.net/th/id/OIP.4rKAfoZGcYPX-fI6wqdeHwHaE8?pid=Api&P=0&h=180.jpg" alt="Traveller with arms open facing the mountains" loading="lazy">
+        </div>
+    </div>
+
+    <div class="Main3">
+        <h1>Why Travel With Us?</h1>
+        <div class="Sub31">
+
+            <div class="WhyCol">
+                <div class="WhyIcon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                </div>
+                <h2>Best Prices</h2>
+                <p>We offer the best prices and amazing travel deals for your perfect journey.</p>
+            </div>
+
+            <div class="WhyCol">
+                <div class="WhyIcon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 18v-6a9 9 0 0 1 18 0v6"></path><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"></path></svg>
+                </div>
+                <h2>Trusted Service</h2>
+                <p>Our team is available 24/7 to help you with all your travel needs.</p>
+            </div>
+
+            <div class="WhyCol">
+                <div class="WhyIcon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9,22 9,12 15,12 15,22"></polyline></svg>
+                </div>
+                <h2>Handpicked Hotels</h2>
+                <p>We partner with top-rated hotels to make your stay comfortable.</p>
+            </div>
+
+            <div class="WhyCol">
+                <div class="WhyIcon">
+                    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </div>
+                <h2>Memorable Experiences</h2>
+                <p>Create unforgettable memories with exciting destinations around the world.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="Footer">
+        <div class="FooterBox">
+            <h2>Wanderly</h2>
+            <p>Let's make your next journey your best adventure yet.</p>
+            <div class="SocialRow">
+            <a href="https://www.facebook.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+            <a href="https://www.instagram.com"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+            <a href="https://www.twitter.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path></svg></a>
+            <a href="https://www.youtube.com"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path></svg></a>
+        </div>
+        </div>
+
+        <div class="FooterBox">
+            <h2>Quick Links</h2>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="explore.html">Explore</a>
+            <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="FooterBox">
+            <h2>Top Destinations</h2>
+            <a href="explore.html">Bali</a>
+            <a href="explore.html">Greece</a>
+            <a href="explore.html">Switzerland</a>
+            <a href="explore.html">Japan</a>
+        </div>
+
+        <div class="FooterBox">
+            <h2>Support</h2>
+            <p>FAQ</p>
+            <p>Privacy Policy</p>
+            <p>Terms & Conditions</p>
+        </div>
+
+        <div class="FooterBox">
+            <h2>Newsletter</h2>
+            <p>Subscribe to get the latest travel updates.</p>
+            <form class="NewsletterForm" id="newsletterForm">
+                <input type="email" id="newsletterEmail" placeholder="Enter your email" aria-label="Email address" required>
+                <button type="submit" aria-label="Subscribe"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="Copy">© 2026 Wanderly. All Rights Reserved.</div>
+
+<button class="ScrollTopBtn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<script src="js/loader.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/about.js"></script>
+</body>
+</html>
