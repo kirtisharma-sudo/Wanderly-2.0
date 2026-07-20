@@ -1,0 +1,317 @@
+.PlannerHero{
+    width:100%;
+    padding:150px 20px 60px;
+    text-align:center;
+    background:linear-gradient(180deg, var(--icon-tint-bg) 0%, var(--bg-page) 100%);
+}
+
+.PlannerHeroInner{
+    max-width:640px;
+    margin:0 auto;
+}
+
+.PlannerBadge{
+    display:inline-block;
+    padding:6px 16px;
+    border-radius:999px;
+    background-color:var(--bg-surface);
+    color:var(--accent);
+    font-size:13px;
+    font-weight:bold;
+    box-shadow:0px 4px 12px var(--card-shadow);
+    margin-bottom:18px;
+}
+
+.PlannerHero h1{
+    font-size:38px;
+    color:var(--text-heading);
+    margin-bottom:14px;
+}
+
+.PlannerHero p{
+    font-size:16px;
+    line-height:26px;
+    color:var(--text-body);
+}
+
+.PlannerWrap{
+    max-width:800px;
+    margin:0 auto;
+    padding:0 20px 80px;
+}
+
+/* ===== Form ===== */
+.PlannerForm{
+    background-color:var(--bg-surface);
+    border-radius:16px;
+    box-shadow:0px 8px 24px var(--card-shadow);
+    padding:32px;
+    margin-top:-50px;
+    position:relative;
+    z-index:5;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px 24px;
+    transition:var(--theme-transition);
+}
+
+.PlannerField{
+    display:flex;
+    flex-direction:column;
+}
+
+.PlannerField:first-child{
+    grid-column:1 / -1;
+}
+
+.PlannerField label{
+    font-weight:bold;
+    color:var(--text-heading);
+    font-size:14px;
+    margin-bottom:8px;
+}
+
+.PlannerField input{
+    height:46px;
+    padding:0 14px;
+    border:1px solid var(--border-color-soft);
+    border-radius:8px;
+    background-color:var(--input-bg);
+    color:var(--text-heading);
+    font-size:15px;
+    outline:none;
+    transition:border-color 0.25s ease, var(--theme-transition);
+}
+
+.PlannerField input:focus{
+    border-color:var(--accent);
+}
+
+.PlannerField input[aria-invalid="true"]{
+    border-color:#dc2626;
+}
+
+.PlannerField .error-text{
+    min-height:16px;
+    margin-top:4px;
+}
+
+.PlannerSubmit{
+    grid-column:1 / -1;
+    height:50px;
+    border:none;
+    border-radius:8px;
+    background-color:var(--accent);
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background-color 0.25s ease, transform 0.2s ease;
+}
+
+.PlannerSubmit:hover{
+    background-color:var(--accent-strong);
+    transform:translateY(-2px);
+}
+
+.PlannerSubmit:active{
+    transform:translateY(0) scale(0.98);
+}
+
+/* ===== Loading state ===== */
+.PlannerLoading{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.PlannerSpinner{
+    width:44px;
+    height:44px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    border:3px solid var(--border-color-soft);
+    border-top-color:var(--accent);
+    animation:plannerSpin 0.8s linear infinite;
+}
+
+@keyframes plannerSpin{
+    to{ transform:rotate(360deg); }
+}
+
+.PlannerLoading p{
+    color:var(--text-muted);
+    font-size:15px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    .PlannerSpinner{
+        animation-duration:1.6s;
+    }
+}
+
+/* ===== Results ===== */
+.PlannerResults{
+    margin-top:30px;
+    opacity:0;
+    transform:translateY(16px);
+    transition:opacity 0.5s ease, transform 0.5s ease;
+}
+
+.PlannerResults.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.PlannerSummary{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:16px;
+    margin-bottom:24px;
+}
+
+.PlannerSummary h2{
+    font-size:24px;
+    color:var(--text-heading);
+    margin-bottom:4px;
+}
+
+.PlannerSummary p{
+    color:var(--text-muted);
+    font-size:14px;
+}
+
+.PlannerBudgetStatus{
+    padding:10px 18px;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.PlannerBudgetStatus.is-ok{
+    background-color:rgba(22,163,74,0.12);
+    color:#16a34a;
+}
+
+.PlannerBudgetStatus.is-over{
+    background-color:rgba(220,38,38,0.12);
+    color:#dc2626;
+}
+
+.PlannerDays{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.PlannerDayCard{
+    background-color:var(--bg-surface);
+    border:1px solid var(--border-color-soft);
+    border-radius:14px;
+    padding:22px 24px;
+    transition:var(--theme-transition);
+}
+
+.PlannerDayHeader{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:14px;
+}
+
+.PlannerDayHeader h3{
+    font-size:17px;
+    color:var(--text-heading);
+}
+
+.PlannerDayCost{
+    font-size:13px;
+    color:var(--accent);
+    font-weight:bold;
+}
+
+.PlannerSlot{
+    display:flex;
+    gap:14px;
+    padding:10px 0;
+    border-top:1px solid var(--border-color);
+}
+
+.PlannerSlot:first-of-type{
+    border-top:none;
+}
+
+.PlannerSlotTime{
+    width:76px;
+    flex-shrink:0;
+    font-size:12px;
+    font-weight:bold;
+    color:var(--text-faint);
+    text-transform:uppercase;
+    padding-top:2px;
+}
+
+.PlannerSlotText{
+    flex:1;
+    font-size:14px;
+    line-height:22px;
+    color:var(--text-body);
+}
+
+.PlannerActions{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+}
+
+.PlannerRegenerate,
+.PlannerStartOver{
+    height:46px;
+    padding:0 22px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:background-color 0.25s ease, color 0.25s ease;
+}
+
+.PlannerRegenerate{
+    border:1.5px solid var(--accent);
+    background-color:transparent;
+    color:var(--accent);
+}
+
+.PlannerRegenerate:hover{
+    background-color:var(--accent);
+    color:white;
+}
+
+.PlannerStartOver{
+    border:none;
+    background-color:var(--hover-tint);
+    color:var(--text-muted-2);
+}
+
+.PlannerStartOver:hover{
+    background-color:var(--border-color-soft);
+}
+
+@media (max-width:768px){
+    .PlannerHero{
+        padding:130px 20px 50px;
+    }
+    .PlannerHero h1{
+        font-size:28px;
+    }
+    .PlannerForm{
+        grid-template-columns:1fr;
+        padding:24px;
+        margin-top:-30px;
+    }
+    .PlannerSlotTime{
+        width:64px;
+    }
+}

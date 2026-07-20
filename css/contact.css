@@ -1,0 +1,172 @@
+.Main2{
+    width:90%;
+    max-width:1200px;
+    margin:130px auto 40px auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:30px;
+}
+
+.Left{
+    width:35%;
+}
+
+.Right{
+    width:58%;
+    background-color:white;
+    padding:30px;
+    border-radius:14px;
+    box-shadow:0px 6px 20px rgba(0,0,0,0.08);
+}
+
+.Left h1{
+    font-size:38px;
+    color:#0b2a67;
+    margin-bottom:6px;
+}
+
+.Left > p{
+    color:#555;
+    line-height:26px;
+    font-size:16px;
+}
+
+/* ===== Icon info rows ===== */
+.Info{
+    margin-top:30px;
+}
+
+.InfoRow{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    margin-top:20px;
+}
+
+.InfoIcon{
+    width:42px;
+    height:42px;
+    min-width:42px;
+    border-radius:10px;
+    background:#eaf1fd;
+    color:#0b4cc2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.InfoRow h3{
+    color:#0b2a67;
+    font-size:15px;
+    margin-bottom:4px;
+}
+
+.InfoRow p{
+    color:gray;
+    line-height:22px;
+    font-size:14px;
+}
+
+/* ===== Social ===== */
+.Social{
+    margin-top:30px;
+}
+
+.Social h3{
+    color:#0b2a67;
+    margin-bottom:12px;
+    font-size:15px;
+}
+
+.Circle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:36px;
+    height:36px;
+    border-radius:50%;
+    background:#0b4cc2;
+    color:white;
+    margin-right:10px;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+}
+
+.Circle .icon{
+    width:16px;
+    height:16px;
+}
+
+.Circle:hover{
+    transform:translateY(-3px);
+    background:#08368a;
+}
+
+/* ===== Form ===== */
+label{
+    display:block;
+    font-weight:bold;
+    margin-top:18px;
+    margin-bottom:8px;
+    color:#0b2a67;
+    font-size:14px;
+}
+
+input[type="text"],
+input[type="email"]{
+    width:100%;
+    height:45px;
+    padding-left:15px;
+    border:1px solid #e2e2e2;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+}
+
+textarea{
+    width:100%;
+    padding:15px;
+    border:1px solid #e2e2e2;
+    border-radius:8px;
+    resize:none;
+    outline:none;
+    font-size:15px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus{
+    border:1px solid #0b4cc2;
+}
+
+.SendButton{
+    width:100%;
+    height:48px;
+    background:#0b4cc2;
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.SendButton:hover{
+    background:#08368a;
+}
+
+@media(max-width:900px){
+    .Main2{
+        display:block;
+    }
+    .Left{
+        width:100%;
+        margin-bottom:40px;
+    }
+    .Right{
+        width:100%;
+    }
+}

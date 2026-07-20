@@ -1,0 +1,174 @@
+.Main2{
+    width:100%;
+    min-height:calc(100vh - 80px);
+    margin-top:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:stretch;
+}
+
+.Left{
+    width:50%;
+    position:relative;
+    background-image:linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.55)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:flex-end;
+    padding:40px;
+}
+
+.BrandMark{
+    position:absolute;
+    top:30px;
+    left:35px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:white;
+    text-decoration:none;
+}
+
+.BrandMark .icon{
+    width:26px;
+    height:26px;
+}
+
+.LeftText{
+    color:white;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.5);
+    padding-bottom:30px;
+}
+
+.LeftText h1{
+    font-size:42px;
+    margin-bottom:14px;
+}
+
+.LeftText p{
+    font-size:18px;
+    line-height:28px;
+    max-width:380px;
+}
+
+.Right{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+}
+
+.RightCard{
+    width:100%;
+    max-width:420px;
+    background-color:white;
+    border-radius:15px;
+    padding:40px;
+    box-shadow:0px 8px 24px rgba(0,0,0,0.10);
+}
+
+.RightCard h1{
+    color:#0b2a67;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.RightCard p{
+    color:gray;
+    line-height:22px;
+    margin-bottom:16px;
+    font-size:15px;
+}
+
+label{
+    display:block;
+    margin-top:12px;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#0b2a67;
+    font-size:14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"]{
+    width:100%;
+    height:45px;
+    padding-left:12px;
+    border:1px solid #e2e2e2;
+    border-radius:8px;
+    outline:none;
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+input:focus{
+    border:1px solid #0b4cc2;
+}
+
+.LoginButton{
+    width:100%;
+    height:48px;
+    border:none;
+    border-radius:8px;
+    background-color:#0b4cc2;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-top:12px;
+}
+
+.socials{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    margin-top:14px;
+}
+
+.socials button{
+    flex:1;
+    height:42px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    color:white;
+    font-weight:bold;
+}
+
+.google{
+    background:#db4437;
+}
+
+.github{
+    background:#333;
+}
+
+.SignUp{
+    text-align:center;
+    margin-top:18px;
+}
+
+.SignUp a{
+    color:#0b4cc2;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+@media(max-width:900px){
+    .Main2{
+        display:block;
+    }
+    .Left{
+        width:100%;
+        min-height:240px;
+    }
+    .Right{
+        width:100%;
+        padding:30px 20px;
+    }
+    .RightCard{
+        padding:30px 24px;
+    }
+}
