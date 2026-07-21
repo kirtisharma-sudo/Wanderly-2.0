@@ -449,6 +449,9 @@ body{
 }
 
 @media(max-width:900px){
+    body{
+        overflow-x:hidden;
+    }
     .Sub16{
         flex-wrap:wrap;
         bottom:auto;
@@ -456,7 +459,7 @@ body{
         left:auto;
         transform:none;
         margin:20px auto 0;
-        width:calc(100% - 40px);
+        width:100%;
         max-width:100%;
         box-sizing:border-box;
     }
@@ -490,9 +493,6 @@ body{
 }
 
 @media(max-width:768px){
-    .Sub16{
-        width:calc(100% - 24px);
-    }
     .SearchField{
         width:100%;
         min-width:0;
@@ -553,4 +553,4 @@ body{
     .SliderArrow--next{
         right:10px;
     }
-    }
+}
