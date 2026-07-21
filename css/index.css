@@ -152,6 +152,7 @@ body{
 }
 
 /* ===== Floating search bar ===== */
+
 .Sub16{
     position:absolute;
     left:50%;
@@ -167,12 +168,12 @@ body{
     align-items:stretch;
     transition:opacity 0.6s ease, transform 0.6s ease;
 }
-
+ 
 .Sub16.is-visible{
     transform:translateX(-50%) translateY(0);
     opacity:1;
 }
-
+ 
 @media (prefers-reduced-motion: reduce){
     .Sub16{
         transition:none;
@@ -180,7 +181,7 @@ body{
         transform:translateX(-50%) translateY(0);
     }
 }
-
+ 
 .SearchField{
     flex:1;
     display:flex;
@@ -189,7 +190,7 @@ body{
     padding:16px 20px;
     border-right:1px solid var(--border-color);
 }
-
+ 
 .SearchField .icon{
     color:var(--accent);
 }
@@ -456,11 +457,15 @@ body{
         left:auto;
         transform:none;
         margin:20px auto 0;
+        width:calc(100% - 40px);
+        max-width:100%;
+        box-sizing:border-box;
     }
     .SearchField{
         width:50%;
         flex:none;
         border-bottom:1px solid var(--border-color);
+        box-sizing:border-box;
     }
     #SearchButton{
         width:calc(100% - 20px);
@@ -486,6 +491,28 @@ body{
 }
 
 @media(max-width:768px){
+    .Sub16{
+        width:calc(100% - 24px);
+    }
+    .SearchField{
+        width:100%;
+        min-width:0;
+        padding:14px 16px;
+    }
+    .SearchField .icon{
+        flex-shrink:0;
+    }
+    .FieldText{
+        min-width:0;
+    }
+    .FieldText select,
+    .FieldText input{
+        min-width:0;
+    }
+    #SearchButton{
+        margin:10px 10px 14px;
+        width:calc(100% - 20px);
+    }
     .Sub14 h1{
         font-size:36px;
     }
