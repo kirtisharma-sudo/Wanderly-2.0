@@ -152,7 +152,6 @@ body{
 }
 
 /* ===== Floating search bar ===== */
-
 .Sub16{
     position:absolute;
     left:50%;
@@ -168,12 +167,12 @@ body{
     align-items:stretch;
     transition:opacity 0.6s ease, transform 0.6s ease;
 }
- 
+
 .Sub16.is-visible{
     transform:translateX(-50%) translateY(0);
     opacity:1;
 }
- 
+
 @media (prefers-reduced-motion: reduce){
     .Sub16{
         transition:none;
@@ -181,7 +180,7 @@ body{
         transform:translateX(-50%) translateY(0);
     }
 }
- 
+
 .SearchField{
     flex:1;
     display:flex;
@@ -190,7 +189,7 @@ body{
     padding:16px 20px;
     border-right:1px solid var(--border-color);
 }
- 
+
 .SearchField .icon{
     color:var(--accent);
 }
@@ -554,4 +553,4 @@ body{
     .SliderArrow--next{
         right:10px;
     }
-}
+    }
