@@ -456,7 +456,8 @@ body{
 }
 
 @media(max-width:900px){
-    .Sub16{
+    .Sub16,
+    .Sub16.is-visible{
         flex-wrap:wrap;
         bottom:auto;
         position:relative;
