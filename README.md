@@ -32,7 +32,7 @@ It's to make users **feel like they're already planning their next journey.**
 
 # Live Preview
 
-> **Live Website:** * *
+> **Live Website:** https://kirtisharma-sudo.github.io/Wanderly-2.0/
 
 ---
 
