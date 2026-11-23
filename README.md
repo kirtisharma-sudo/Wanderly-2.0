@@ -3,9 +3,9 @@
 <div align="center">
 
 <img src="images/wanderly-logo.png" width="120" alt="Wanderly Logo">
-##CODE: WQAPYM
-### **Discover. Dream. Wander.**
 
+### **Discover. Dream. Wander.**
+### CODE: WQAPYM
 *A premium travel booking experience built with modern web technologies, elegant UI, and interactive JavaScript.*
 
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
